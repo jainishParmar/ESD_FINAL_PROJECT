@@ -1,14 +1,20 @@
 package com.example.esd_hostel_service.service;
 
 
+import com.example.esd_hostel_service.exception.StudentAllreadyAllocated;
+import com.example.esd_hostel_service.exception.StudentDoesNotExists;
 import com.example.esd_hostel_service.model.Hostel;
+import com.example.esd_hostel_service.model.Student;
 import com.example.esd_hostel_service.repo.HostelRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class HostelService {
@@ -16,84 +22,135 @@ public class HostelService {
     @Autowired
     private HostelRepo hostelRepo;
 
-    public  Hostel getHostelsRoomsById(int id) throws Exception {
-         return hostelRepo.findById(id).orElse(null);
+    @Autowired
+    private StudentService studentService;
+
+    public  ResponseEntity<?> getHostelsRoomsById(int id) throws Exception {
+            Hostel hostel = hostelRepo.findById(id).get();
+            return new ResponseEntity<>(hostel, HttpStatus.OK);
     }
 
 
-    public List<Hostel> getAllHostelsRooms(String name,int floor,int all) throws  Exception{
+    public ResponseEntity<?> getAllHostelsRooms(String name,int floor,int all) throws  Exception{
 
         List<Hostel> hostels = null;
         List<Hostel>Filter_List_by_name=new ArrayList<>();
         List<Hostel>Filter_List_by_floor=new ArrayList<>();
         List<Hostel>Filter_List_by_all=new ArrayList<>();
-        try{
-            hostels = hostelRepo.findAll();
-        } catch (Exception e) {
-            throw new Exception("error while getting hostel data");
-        }
+
+
+        hostels = hostelRepo.findAll();
+
 
         if(name.length()==0 && floor==0 && all==0){
-            return hostels;
+
+        }else {
+
+
+            if (name.length() > 0) {
+                Filter_List_by_name = hostels.stream().filter(x -> x.getName().equals(name)).toList();
+            }
+
+            if (floor > 0) {
+                if (name.length() > 0) {
+                    if (Filter_List_by_name.size() > 0) {
+                        Filter_List_by_floor = Filter_List_by_name.stream().filter(x -> x.getFloor() == floor).toList();
+                    }
+                } else {
+                    Filter_List_by_floor = hostels.stream().filter(x -> x.getFloor() == floor).toList();
+
+                }
+
+            }
+
+            if (all > 0) {
+
+                if (all == 1) {
+
+                    if (name.length() > 0 && floor > 0) {
+                        Filter_List_by_all = Filter_List_by_floor.stream().filter(x -> x.getStudent() == null).toList();
+                    } else if (floor > 0) {
+                        Filter_List_by_all = Filter_List_by_floor.stream().filter(x -> x.getStudent() == null).toList();
+
+                    } else if (name.length() > 0) {
+                        Filter_List_by_all = Filter_List_by_name.stream().filter(x -> x.getStudent() == null).toList();
+                    } else {
+                        Filter_List_by_all = hostels.stream().filter(x -> x.getStudent() == null).toList();
+                    }
+
+                }
+
+                if (all == 2) {
+                    if (name.length() > 0 && floor > 0) {
+                        Filter_List_by_all = Filter_List_by_floor.stream().filter(x -> x.getStudent() != null).toList();
+                    } else if (floor > 0) {
+                        Filter_List_by_all = Filter_List_by_floor.stream().filter(x -> x.getStudent() != null).toList();
+
+                    } else if (name.length() > 0) {
+                        Filter_List_by_all = Filter_List_by_name.stream().filter(x -> x.getStudent() != null).toList();
+                    } else {
+                        Filter_List_by_all = hostels.stream().filter(x -> x.getStudent() != null).toList();
+
+                    }
+                }
+
+            }
+
+
+            if (all != 0) {
+                hostels = Filter_List_by_all;
+            } else if (floor != 0) {
+                hostels = Filter_List_by_floor;
+            } else {
+                hostels = Filter_List_by_name;
+            }
         }
 
-        if(name.length()>0){
-            Filter_List_by_name=hostels.stream().filter(x -> x.getName().equals(name)).toList();
+
+        if(hostels.isEmpty()) {
+            List<List<List<Hostel>>> t=new ArrayList<>();
+            return new ResponseEntity<>(t,HttpStatus.OK);
         }
 
-        if(floor >0){
-            if(name.length()>0){
-                if(Filter_List_by_name.size()>0){
-                    Filter_List_by_floor=Filter_List_by_name.stream().filter(x -> x.getFloor()==floor).toList();
+        HashMap<String, HashMap<Integer,List<Hostel>>> hashMap = new  HashMap<>();
+        for(Hostel hostel:hostels){
+            if(hashMap.containsKey(hostel.getName())){
+                if(hashMap.get(hostel.getName()).containsKey(hostel.getFloor())){
+                    hashMap.get(hostel.getName()).get(hostel.getFloor()).add(hostel);
+                }else{
+                    List<Hostel> temp = new ArrayList<>();
+                    temp.add(hostel);
+                    hashMap.get(hostel.getName()).put(hostel.getFloor(), temp);
                 }
             }else{
-                Filter_List_by_floor=hostels.stream().filter(x -> x.getFloor()==floor).toList();
-
+                HashMap<Integer,List<Hostel>> temp = new HashMap<>();
+                List<Hostel> temp1 = new ArrayList<>();
+                temp1.add(hostel);
+                temp.put(hostel.getFloor(), temp1);
+                hashMap.put(hostel.getName(), temp);
             }
-
         }
 
-        if(all>0){
+//        for(Map.Entry<String, HashMap<Integer, List<Hostel>>> entry:hashMap.entrySet()){
+//            System.out.print(entry.getKey() + "->");
+//            for(Map.Entry<Integer,List<Hostel>> entry1:entry.getValue().entrySet()){
+//                System.out.println(entry1.getKey() + "->" + entry1.getValue());
+//            }
+//        }
 
-            if(all==1){
+        Collection<HashMap<Integer,List<Hostel>>> values = hashMap.values();
 
-                if(name.length()>0 && floor>0) {
-                    Filter_List_by_all=Filter_List_by_floor.stream().filter(x -> x.getStudent()==null).toList();
-                }else if(floor > 0){
-                    Filter_List_by_all=Filter_List_by_floor.stream().filter(x -> x.getStudent()==null).toList();
+        // Creating an ArrayList of values
+        ArrayList<HashMap<Integer,List<Hostel>>> listOfValues = new ArrayList<>(values);
 
-                }else if(name.length()>0) {
-                    Filter_List_by_all=Filter_List_by_name.stream().filter(x -> x.getStudent()==null).toList();
-                }else{
-                    Filter_List_by_all=hostels.stream().filter(x -> x.getStudent()==null).toList();
-                }
+        List<List<List<Hostel>>> val=new ArrayList<>();
 
-            }
-
-            if(all==2){
-                if(name.length()>0 && floor>0) {
-                    Filter_List_by_all=Filter_List_by_floor.stream().filter(x -> x.getStudent()!=null).toList();
-                }else if(floor > 0){
-                    Filter_List_by_all=Filter_List_by_floor.stream().filter(x -> x.getStudent()!=null).toList();
-
-                }else if(name.length()>0){
-                    Filter_List_by_all=Filter_List_by_name.stream().filter(x -> x.getStudent()!=null).toList();
-                }else{
-                    Filter_List_by_all=hostels.stream().filter(x -> x.getStudent()!=null).toList();
-
-                }
-            }
-
+        for(HashMap<Integer,List<Hostel>> map:listOfValues){
+            Collection<List<Hostel>>final_pro=map.values();
+            List<List<Hostel>> temp=new ArrayList<>(final_pro);
+            val.add(temp);
         }
-
-
-
-        if(all!=0){
-            return Filter_List_by_all;
-        }else if(floor!=0){
-            return Filter_List_by_floor;
-        }
-        return Filter_List_by_name;
+        return new ResponseEntity<>(val,HttpStatus.OK);
 
 
 
@@ -103,32 +160,29 @@ public class HostelService {
     }
 
     public void add_rooms(List<Hostel> hostels) throws  Exception{
-
-        try{
             hostelRepo.saveAll(hostels);
-        }catch (Exception e) {
-            throw new Exception("error while storing rooms");
-        }
+    }
+
+    public ResponseEntity<?> allocate_rooms(Hostel hostel) throws  Exception{
+
+            List<Student>students=studentService.get_all_students();
+            if(!students.contains(hostel.getStudent())){
+                throw new StudentDoesNotExists("Student Does Not Exists..");
+            }
+
+            Hostel hs=hostelRepo.findBystudent(hostel.getStudent());
+            if(hs!=null){
+                throw new StudentAllreadyAllocated("Student already allocated room");
+            }
+            hostel=hostelRepo.save(hostel);
+            return  new ResponseEntity<>(hostel,HttpStatus.OK);
+
 
     }
 
-    public Hostel allocate_rooms(Hostel hostel) throws  Exception{
-
-        try {
-            return hostelRepo.save(hostel);
-        }
-        catch (Exception e) {
-            throw new Exception("error while allocating rooms");
-        }
-    }
-
-    public Hostel vacant_room(Hostel hostel) throws  Exception {
+    public ResponseEntity<?> vacant_room(Hostel hostel){
         hostel.setStudent(null);
-        try {
-            return hostelRepo.save(hostel);
-        }
-        catch (Exception e) {
-            throw new Exception("error while vacating rooms");
-        }
+        hostel=hostelRepo.save(hostel);
+        return new ResponseEntity<>(hostel, HttpStatus.OK);
     }
 }

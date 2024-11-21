@@ -4,34 +4,80 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53b38222-66aa-4375-93e2-fd42074471e6" name="Changes" comment="" />
+    <list default="true" id="53b38222-66aa-4375-93e2-fd42074471e6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/exception/ErrorResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/exception/GlobalException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/exception/JwtTokenNotValid.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/exception/StudentAllreadyAllocated.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/exception/StudentDoesNotExists.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/controller/HostelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/controller/HostelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/repo/HostelRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/repo/HostelRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/service/HostelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/service/HostelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/config/JwtTokenValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/config/JwtTokenValidator.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;jainishParmar&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:jainishParmar/ESD_FINAL_PROJECT.git&quot;,
+    &quot;accountId&quot;: &quot;195d6fa0-5375-41b8-b186-87602cadf8fe&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2p8qBokiGdlOhQrWYSmxrUuamty" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/media/jainish-parmar/part2/ESD/ESD_FINAL_PROJECT/ESD_MINI_PROJECT_BACKEND",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.configurations.included.in.services": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.EsdHostelServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EsdUserServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TaskServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/media/jainish-parmar/part2/ESD/ESD_FINAL_PROJECT/ESD_MINI_PROJECT_BACKEND&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -42,7 +88,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.GatewayApplication">
+  <component name="RunManager" selected="Spring Boot.EsdHostelServiceApplication">
     <configuration name="EsdHostelServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="esd_hostel_service" />
@@ -74,6 +120,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Spring Boot.EsdHostelServiceApplication" />
+      <item itemvalue="Spring Boot.EsdUserServiceApplication" />
+      <item itemvalue="Spring Boot.GatewayApplication" />
+      <item itemvalue="Spring Boot.TaskServerApplication" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -92,6 +144,13 @@
       <option name="presentableId" value="Default" />
       <updated>1732157919480</updated>
       <workItem from="1732157920546" duration="564000" />
+      <workItem from="1732162466282" duration="1162000" />
+      <workItem from="1732163806348" duration="5885000" />
+      <workItem from="1732173067479" duration="474000" />
+      <workItem from="1732177900533" duration="2315000" />
+      <workItem from="1732202377517" duration="3260000" />
+      <workItem from="1732207253760" duration="2714000" />
+      <workItem from="1732211393707" duration="1814000" />
     </task>
     <servers />
   </component>
