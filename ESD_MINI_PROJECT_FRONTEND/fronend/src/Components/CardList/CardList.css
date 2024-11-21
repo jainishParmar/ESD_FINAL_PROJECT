@@ -1,0 +1,8 @@
+.card-list-main{
+
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    flex-wrap: wrap;
+    padding:10px;
+}
