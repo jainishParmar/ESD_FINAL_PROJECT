@@ -1,0 +1,38 @@
+server:
+  port: 5000
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: ESD-USER-SERVICE
+          uri:
+            lb://ESD-USER-SERVICE
+          predicates:
+            - Path=/auth/**,/users/**,/api/users/**,/
+        - id: ESD-HOSTEL-SERVICE
+          uri:
+            lb://ESD-HOSTEL-SERVICE
+          predicates:
+            - Path=/api/hostel/**,/api/student/**
+
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
