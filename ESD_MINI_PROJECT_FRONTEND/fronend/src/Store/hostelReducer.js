@@ -52,8 +52,8 @@ export const update = createAsyncThunk(
       return response.data
     } catch (error) {
       console.log('catched error response statuss' + error.status)
-      console.log('catch error', error)
-      toast.error('Internal Server Error', {
+      console.log(error.response.data.message)
+      toast.error(error.response.data.message, {
         position: 'top-center',
         autoClose: 3000,
         hideProgressBar: false,
@@ -93,7 +93,7 @@ export const vacant = createAsyncThunk(
       return response.data
     } catch (error) {
       console.log('catch error', error)
-      console.log(error.response.status)
+      console.log(error.response.data.message)
       toast.error('Internal Server Error', {
         position: 'top-center',
         autoClose: 3000,
@@ -109,6 +109,24 @@ export const vacant = createAsyncThunk(
     }
   }
 )
+
+export const getAllNames=createAsyncThunk(
+  'hostel/getAllNames',
+  async({jwt})=>{
+    setAuthHeader(jwt,api);
+    try{
+      const response = await api.get(
+        `${BASE_URL}/api/hostel/hostelname`
+      )
+      console.log(response);
+      return response.data;
+
+    }catch(error){
+      throw Error(error.response.data.error)
+    }
+
+  }
+)
 export const clearErrors = createAsyncThunk(
   'hostel/clearErrors',
   async () => {}
@@ -117,6 +135,8 @@ const hostelSlice = createSlice({
   name: 'hostel',
   initialState: {
     hostels: [],
+    hostelNames:[],
+
     loading: false,
     error: null
   },
@@ -189,6 +209,19 @@ const hostelSlice = createSlice({
         state.error = null
       })
       .addCase(clearErrors.rejected, (state, action) => {
+        state.loading = false
+        state.error = null
+      })
+      .addCase(getAllNames.pending, state => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(getAllNames.fulfilled, (state, action) => {
+        state.loading = false
+        state.hostelNames=action.payload
+        state.error = null
+      })
+      .addCase(getAllNames.rejected, (state, action) => {
         state.loading = false
         state.error = null
       })

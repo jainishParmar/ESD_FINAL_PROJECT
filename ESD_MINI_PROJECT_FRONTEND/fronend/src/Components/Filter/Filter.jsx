@@ -7,10 +7,11 @@ import Select from '@mui/material/Select'
 import './Filter.css'
 import { Button, Grid } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
-import { gethostel } from '../../Store/hostelReducer'
+import { getAllNames, gethostel } from '../../Store/hostelReducer'
 
 const Filter = () => {
   const dispatch = useDispatch()
+  const { hostel } = useSelector(store => store)
   const [hostelName, SetHostelName] = useState('')
   const [floor, SetFloor] = useState('')
   const [available, SetAvailable] = useState('')
@@ -50,13 +51,21 @@ const Filter = () => {
   }
 
   useEffect(() => {
+    const jwt = localStorage.getItem('jwt')
+    dispatch(getAllNames({jwt:jwt}))
+  }, [hostel.hostels])
 
 
-  }, [])
+  useEffect(()=>{
+
+  },[])
 
   
   return (
-    <div className='filter-main'>
+    <>
+    {
+      hostel.loading?(<div>loading....</div>):(
+        <div className='filter-main'>
     
         <div className='heading'>
           <h1> Filter by Name and Floor</h1>
@@ -70,9 +79,15 @@ const Filter = () => {
                 label='Hostel_Name'
                 onChange={handleNameChange}
               >
-                <MenuItem value={'bhaskara'}>Bhaskara</MenuItem>
+                {/* <MenuItem value={'bhaskara'}>Bhaskara</MenuItem>
                 <MenuItem value={'lilavati'}>Lilavati</MenuItem>
-                <MenuItem value={'vishvareya'}>Vishvareya</MenuItem>
+                <MenuItem value={'vishvareya'}>Vishvareya</MenuItem> */}
+                {
+                  hostel.hostelNames.map((item, index) => 
+                  <MenuItem value={item}>{item}</MenuItem>
+                )
+
+                }
               </Select>
             </FormControl>
           </div>
@@ -147,6 +162,9 @@ const Filter = () => {
         </div>
      
     </div>
+      )
+    }
+    </>
   )
 }
 
