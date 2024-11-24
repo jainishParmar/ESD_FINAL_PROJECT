@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53b38222-66aa-4375-93e2-fd42074471e6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/exception/EmailAlreadyExists.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/exception/ErrorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/exception/GlobalException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/exception/JwtTokenNotValid.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/controller/HostelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/controller/HostelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/repo/HostelRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/repo/HostelRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/service/HostelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/esd_hostel_service/src/main/java/com/example/esd_hostel_service/service/HostelService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/config/JwtTokenValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/config/JwtTokenValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/service/CustomerUserServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/service/CustomerUserServiceImplementation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/service/UserServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/service/UserServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ESD_MINI_PROJECT_FRONTEND/fronend/src/Store/AuthReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ESD_MINI_PROJECT_FRONTEND/fronend/src/Store/AuthReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,29 +46,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.EsdHostelServiceApplication.executor": "Run",
-    "Spring Boot.EsdUserServiceApplication.executor": "Run",
-    "Spring Boot.GatewayApplication.executor": "Run",
-    "Spring Boot.TaskServerApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/media/jainish-parmar/part2/ESD/ESD_FINAL_PROJECT/ESD_MINI_PROJECT_BACKEND",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.configurations.included.in.services": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.EsdHostelServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.EsdUserServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TaskServerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/media/jainish-parmar/part2/ESD/ESD_FINAL_PROJECT/ESD_MINI_PROJECT_BACKEND&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service" />
@@ -95,7 +84,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.EsdHostelServiceApplication">
+  <component name="RunManager" selected="Spring Boot.GatewayApplication">
     <configuration name="EsdHostelServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="esd_hostel_service" />
@@ -163,6 +152,7 @@
       <workItem from="1732426991718" duration="1238000" />
       <workItem from="1732428390737" duration="552000" />
       <workItem from="1732430537932" duration="2120000" />
+      <workItem from="1732457252844" duration="1039000" />
     </task>
     <servers />
   </component>

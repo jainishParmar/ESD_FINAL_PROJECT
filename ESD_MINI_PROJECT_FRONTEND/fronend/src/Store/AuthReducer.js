@@ -23,7 +23,7 @@ export const login = createAsyncThunk('auth/login', async (userData) => {
     return response.data;
   } catch (error) {
     console.log("catch error  ",error)
-    toast.error('Internal Server Error', {
+    toast.error(error.response.data.message, {
       position: 'top-center',
       autoClose: 3000,
       hideProgressBar: false,
@@ -57,7 +57,7 @@ export const register = createAsyncThunk('auth/register', async (userData) => {
     return response.data;
   } catch (error) {
     console.log("catch error  ",error)
-    toast.error('Internal Server Error', {
+    toast.error(error.response.data.message, {
       position: 'top-center',
       autoClose: 3000,
       hideProgressBar: false,
