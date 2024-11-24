@@ -3,6 +3,8 @@ package com.example.esd_user_service.controller;
 
 
 import com.example.esd_user_service.config.JwtProvider;
+import com.example.esd_user_service.exception.EmailAlreadyExists;
+import com.example.esd_user_service.exception.JwtTokenNotValid;
 import com.example.esd_user_service.model.AuthResponse;
 import com.example.esd_user_service.model.LoginRequest;
 import com.example.esd_user_service.model.User;
@@ -51,7 +53,7 @@ public class AuthController {
 
         if (isEmailExist!=null) {
 
-            throw new Exception("Email Is Already Used With Another Account");
+            throw new EmailAlreadyExists("Email Is Already Used With Another Account");
         }
 
         // Create new user
@@ -103,11 +105,11 @@ public class AuthController {
 
         if (userDetails == null) {
             System.out.println("sign in userDetails - null " + userDetails);
-            throw new BadCredentialsException("Invalid username or password");
+            throw new JwtTokenNotValid("Invalid credentials");
         }
         if (!passwordEncoder.matches(password, userDetails.getPassword())) {
             System.out.println("sign in userDetails - password not match " + userDetails);
-            throw new BadCredentialsException("Invalid username or password");
+            throw new JwtTokenNotValid("Invalid credentials");
         }
         return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
     }

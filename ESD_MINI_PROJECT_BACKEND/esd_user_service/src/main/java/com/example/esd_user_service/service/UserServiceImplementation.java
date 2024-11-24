@@ -3,6 +3,7 @@ package com.example.esd_user_service.service;
 
 
 import com.example.esd_user_service.config.JwtProvider;
+import com.example.esd_user_service.exception.JwtTokenNotValid;
 import com.example.esd_user_service.model.User;
 import com.example.esd_user_service.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class UserServiceImplementation implements  UserService {
         User user = userRepo.findByEmail(email);
 
         if(user==null) {
-            throw new Exception("user not exist with email "+email);
+            throw new JwtTokenNotValid("Invalid credentials");
         }
         return user;
     }
@@ -42,7 +43,7 @@ public class UserServiceImplementation implements  UserService {
             return user;
         }
 
-        throw new Exception("user not exist with username "+username);
+        throw new JwtTokenNotValid("Invalid credentials");
     }
 
     @Override
@@ -50,7 +51,7 @@ public class UserServiceImplementation implements  UserService {
         Optional<User> opt = userRepo.findById(userId);
 
         if(opt.isEmpty()) {
-            throw new Exception("user not found with id "+userId);
+            throw new JwtTokenNotValid("Invalid credentials");
         }
         return opt.get();
     }

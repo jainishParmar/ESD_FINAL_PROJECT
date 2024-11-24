@@ -1,5 +1,6 @@
 package com.example.esd_user_service.config;
 
+import com.example.esd_user_service.exception.JwtTokenNotValid;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -49,13 +50,9 @@ public class JwtTokenValidator extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(athentication);
 
             } catch (Exception e) {
-                throw new BadCredentialsException("invalid token...");
-            }
+                throw new JwtTokenNotValid("Invalid credentials");            }
         }
         filterChain.doFilter(request, response);
 
     }
-
-
-
 }

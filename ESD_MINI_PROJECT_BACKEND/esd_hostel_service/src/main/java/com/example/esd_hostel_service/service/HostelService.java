@@ -185,4 +185,11 @@ public class HostelService {
         hostel=hostelRepo.save(hostel);
         return new ResponseEntity<>(hostel, HttpStatus.OK);
     }
+
+    public ResponseEntity<?> getHostelName() {
+
+        List<String>hostel_name=new ArrayList<>();
+        hostel_name=hostelRepo.findDistinctByHostelName();
+        return new ResponseEntity<>(hostel_name,HttpStatus.OK);
+    }
 }

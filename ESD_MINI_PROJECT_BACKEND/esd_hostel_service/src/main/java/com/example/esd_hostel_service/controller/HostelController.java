@@ -30,7 +30,7 @@ public class HostelController {
     public ResponseEntity<?> getAllHostelsRooms(@RequestParam String name,@RequestParam int floor,@RequestParam int all,@RequestHeader("Authorization") String jwt) throws Exception{
 
         if(jwt==null){
-            throw new Exception("jwt required...");
+            throw new JwtTokenNotValid("UNAUTHORIZED CREDENTIALS");
         }
         UserDto user=userService.getUserProfileHandler(jwt);
 
@@ -48,7 +48,7 @@ public class HostelController {
     public ResponseEntity<?> getHostelsRoomsById(@PathVariable int id,@RequestHeader("Authorization") String jwt) throws Exception{
 
         if(jwt==null){
-            throw new Exception("jwt required...");
+            throw new JwtTokenNotValid("UNAUTHORIZED CREDENTIALS");
         }
         UserDto user=userService.getUserProfileHandler(jwt);
 
@@ -63,13 +63,28 @@ public class HostelController {
 
     }
 
+    @GetMapping("hostelname")
+    public ResponseEntity<?>getHostelName(@RequestHeader("Authorization") String jwt){
+            if(jwt==null){
+                throw new JwtTokenNotValid("UNAUTHORIZED CREDENTIALS");
+            }
+            UserDto user=userService.getUserProfileHandler(jwt);
+
+            if(user==null || !user.getRole().equals("ROLE_WARDEN")){
+                throw new JwtTokenNotValid("UNAUTHORIZED CREDENTIALS");
+            }
+
+            return hostelService.getHostelName();
+    }
+
+
 
 
 
     @PostMapping("add")
     public ResponseEntity<?> add_rooms(@RequestBody List<Hostel> hostels,@RequestHeader("Authorization") String jwt) throws Exception {
         if(jwt==null){
-            throw new Exception("jwt required...");
+            throw new JwtTokenNotValid("UNAUTHORIZED CREDENTIALS");
         }
         UserDto user=userService.getUserProfileHandler(jwt);
 
@@ -86,7 +101,7 @@ public class HostelController {
     public ResponseEntity<?> allocate_rooms(@RequestBody Hostel hostel,@RequestHeader("Authorization") String jwt) throws Exception {
 
         if(jwt==null){
-            throw new Exception("jwt required...");
+            throw new JwtTokenNotValid("UNAUTHORIZED CREDENTIALS");
         }
         UserDto user=userService.getUserProfileHandler(jwt);
 
@@ -102,7 +117,7 @@ public class HostelController {
     @PutMapping("vacant/{id}")
     public ResponseEntity<?> vacant_room(@PathVariable int id,@RequestBody Hostel hostel,@RequestHeader("Authorization") String jwt) throws Exception {
         if(jwt==null){
-            throw new Exception("jwt required...");
+            throw new JwtTokenNotValid("UNAUTHORIZED CREDENTIALS");
         }
         UserDto user=userService.getUserProfileHandler(jwt);
 

@@ -2,6 +2,7 @@ package com.example.esd_user_service.service;
 
 
 
+import com.example.esd_user_service.exception.JwtTokenNotValid;
 import com.example.esd_user_service.model.User;
 import com.example.esd_user_service.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class CustomerUserServiceImplementation implements UserDetailsService {
 
         if(user==null) {
 
-            throw new UsernameNotFoundException("user not found with email  - "+username);
+            throw new JwtTokenNotValid("Invalid credentials");
         }
 
         List<GrantedAuthority> authorities=new ArrayList<>();
