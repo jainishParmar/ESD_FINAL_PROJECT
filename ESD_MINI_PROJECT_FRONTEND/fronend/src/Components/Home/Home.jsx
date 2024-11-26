@@ -2,13 +2,14 @@ import React, { useEffect } from 'react'
 import './Home.css'
 import CardList from '../CardList/CardList'
 import Filter from '../Filter/Filter'
+import Navbar from '../Navbar/Navbar/Navbar'
 
 const Home = () => {
  
 
   return (
     <>
-      
+        <Navbar />
         <div className='home-main'>
           <div className='home-left-panel'>
             <Filter />

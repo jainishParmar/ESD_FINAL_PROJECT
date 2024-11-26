@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="53b38222-66aa-4375-93e2-fd42074471e6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ESD_MINI_PROJECT_FRONTEND/fronend/src/Store/AuthReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/../ESD_MINI_PROJECT_FRONTEND/fronend/src/Store/AuthReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/config/ApplicationConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/esd_user_service/src/main/java/com/example/esd_user_service/config/ApplicationConfiguration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +152,8 @@
       <workItem from="1732426991718" duration="1238000" />
       <workItem from="1732428390737" duration="552000" />
       <workItem from="1732430537932" duration="2120000" />
-      <workItem from="1732457252844" duration="1039000" />
+      <workItem from="1732457252844" duration="1324000" />
+      <workItem from="1732600862589" duration="4444000" />
     </task>
     <servers />
   </component>

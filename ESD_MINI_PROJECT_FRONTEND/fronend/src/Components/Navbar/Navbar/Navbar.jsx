@@ -7,10 +7,13 @@ import './Navbar.css'
 import { Avatar } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../../Store/AuthReducer'
+import { useNavigate } from 'react-router'
 
 const Navbar = () => {
+  const navigate=useNavigate();
   const { auth } = useSelector(store => store)
   const user = auth.user
+
 
   const dispatch = useDispatch()
   const [anchorEl, setAnchorEl] = useState(null)
@@ -25,6 +28,8 @@ const Navbar = () => {
   const handlelogout = () => {
     dispatch(logout())
     handleClose()
+    navigate("/login")
+    
   }
 
   useEffect(()=>{

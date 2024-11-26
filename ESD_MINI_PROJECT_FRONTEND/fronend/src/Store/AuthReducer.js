@@ -3,8 +3,10 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { BASE_URL, api, setAuthHeader } from '../Api/api';
 import { toast ,Bounce} from 'react-toastify';
+import { useNavigate } from 'react-router';
 
 export const login = createAsyncThunk('auth/login', async (userData) => {
+  const navigate=useNavigate();
   try {
     const response = await axios.post(`${BASE_URL}/auth/signin`, userData);
     localStorage.setItem("jwt",response.data.jwt)
@@ -20,7 +22,8 @@ export const login = createAsyncThunk('auth/login', async (userData) => {
       theme: "dark",
       transition: Bounce,
       });
-    return response.data;
+    navigate("/hostel")
+    return response.data; 
   } catch (error) {
     console.log("catch error  ",error)
     toast.error(error.response.data.message, {
